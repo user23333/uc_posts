@@ -28,7 +28,7 @@ def get_latest_posts():
         td = tr('td')
         posts.append(
             (
-                td.eq(0).text().replace('|', '\|'),
+                td.eq(0).text().replace('|', '\|').replace('[', '\[').replace(']', '\]'),
                 url + td.eq(1)('a').eq(1).attr('href').replace('-new-post.html', '.html'),
                 local_time(td.eq(2).text()),
                 td.eq(3).text(),
