@@ -28,7 +28,7 @@ def get_latest_posts():
         td = tr('td')
         posts.append(
             (
-                td.eq(0).text(),
+                td.eq(0).text().replace('|', '\|'),
                 url + td.eq(1)('a').eq(1).attr('href').replace('-new-post.html', '.html'),
                 local_time(td.eq(2).text()),
                 td.eq(3).text(),
@@ -50,7 +50,7 @@ def save_posts(filename, posts):
         file.write('|Post|Date|Forum|\n')
         file.write('|----|----|-----|\n')
         for post in posts:
-            file.write('|[%s](%s)|`%s`|%s|\n' % (post[0].replace('|', '\|'), post[1], post[2], post[3]))
+            file.write('|[%s](%s)|`%s`|%s|\n' % post)
 
 
 def make_posts(prev_posts, curr_posts):
