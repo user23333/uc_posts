@@ -50,7 +50,7 @@ def save_posts(filename, posts):
         file.write('|Post|Date|Forum|\n')
         file.write('|----|----|-----|\n')
         for post in posts:
-            file.write('|[%s](%s)|`%s`|%s|\n' % post)
+            file.write('|[%s](%s)|`%s`|%s|\n' % (post[0].replace('|', '\|'), post[1], post[2], post[3]))
 
 
 def make_posts(prev_posts, curr_posts):
